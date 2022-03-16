@@ -95,7 +95,9 @@ export class ServerComponentRequest extends Request {
     return new Map(
       cookieString
         .split(';')
-        .map((chunk) => chunk.trim().split(/=(.+)/) as [string, string])
+        .map(
+          (chunk) => chunk.trim().split(/=(.+)/).slice(0, 2) as [string, string]
+        )
     );
   }
 
